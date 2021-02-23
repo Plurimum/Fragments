@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="first_screen_count">0</string>
+    <string name="second_screen_count">0</string>
+    <string name="third_screen_count">0</string>
+</resources>

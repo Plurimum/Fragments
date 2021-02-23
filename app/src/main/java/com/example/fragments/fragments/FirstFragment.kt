@@ -1,0 +1,38 @@
+package com.example.fragments.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.fragments.R
+
+class FirstFragment : Fragment() {
+
+    companion object {
+        var globalCount = 0
+    }
+
+    val args: FirstFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) : View {
+        val view = inflater.inflate(R.layout.fragment_first, container, false)
+        var count = args.count
+        globalCount = count
+        val countDisplay = view.findViewById<TextView>(R.id.first_screen_text)
+        countDisplay.text = count.toString()
+        view.findViewById<Button>(R.id.first_screen_button).setOnClickListener {
+            val action = FirstFragmentDirections.actionFirstScreenFragmentSelf(++count)
+            it.findNavController().navigate(action)
+        }
+        return view
+    }
+}
